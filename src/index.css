@@ -1,13 +1,293 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+html {
+  scroll-behavior: smooth !important;
+}
+
+body {
+  font-family: "Lato", sans-serif !important;
+  font-style: normal !important;
+  background-color: #f5f7fa !important;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+.f_10 {
+  font-size: 10px;
+}
+
+.f_12 {
+  font-size: 12px;
+}
+
+.f_14 {
+  font-size: 14px;
+}
+
+.f_16 {
+  font-size: 16px;
+}
+
+.f_18 {
+  font-size: 18px;
+}
+
+.f_22 {
+  font-size: 22px;
+}
+
+.f_26 {
+  font-size: 26px;
+}
+
+.spHeading {
+  font-size: clamp(2rem, 1.077rem + 5.7936, 5.65251);
+}
+
+.f_32 {
+  font-size: 32px;
+}
+
+.f_40 {
+  font-size: 40px;
+}
+
+.logo {
+  width: 140px;
+}
+
+.logo img {
+  width: 100%;
+}
+
+header {
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  width: 100%;
+  box-shadow: 3px 2px 26px -15px, inset 10px 10px 50px -4px rgba(155, 154, 154, 0.1);
+  z-index: 9;
+}
+
+nav ul>li {
+  list-style: none;
+  font-weight: 600;
+  padding: 0px 14px;
+}
+
+nav ul li {
+  cursor: pointer;
+}
+
+.mLogo {
+  display: none;
+}
+
+.search svg {
+  cursor: pointer;
+}
+
+.hamIcon {
+  display: none;
+}
+
+.search .searchBar {
+  width: 100wh;
+  height: 85%;
+  position: fixed;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  bottom: -100%;
+  z-index: 10;
+  visibility: hidden;
+  opacity: 0;
+  box-shadow: 0px 0px 30px 0px rgb(0, 0, 0, 0.3);
+  transition: 0.4s ease-in-out;
+}
+
+.searchShow {
+  bottom: 0 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.searchText input {
+  width: 100%;
+  height: 100px;
+  font-size: 40px;
+  outline: none;
+  padding: 0px 50px;
+  text-align: center;
+  border: none;
+  border-bottom: solid #f6f6f6;
+}
+
+.searchText input::placeholder {
+  color: #000000;
+}
+
+.closeSearch {
+  position: absolute;
+  font-size: 40px;
+  right: 20px;
+  top: 15px;
+}
+
+.searchContent .box {
+  width: 200px;
+  height: 300px;
+  border: 1px solid black;
+}
+
+.search .searchBar .searchContent {
+  max-height: 73%;
+  height: 100%;
+  overflow-y: auto !important;
+}
+
+.mbIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  cursor: pointer;
+  background-color: #fff;
+  box-shadow: 3px 2px 26px -15px, inset 10px 10px 50px -4px rgba(212, 211, 211, 0.1);
+  border-radius: 20px;
+  transition: 0.3s ease-in-out;
+}
+
+.mbIcon:hover {
+  transform: scale(1.010) translateY(-8px);
+}
+
+.mbIcon img {
+  width: 140px;
+  height: 100px;
+  mix-blend-mode: darken;
+  object-fit: cover;
+}
+
+.sliderBox {
+  margin: 15px 10px;
+  box-shadow: 3px 2px 26px -15px, inset 10px 10px 50px -4px rgba(212, 211, 211, 0.1);
+  overflow: hidden !important;
+  border-radius: 20px !important;
+}
+
+.facility {
+  border: solid #f6f6f6;
+  border-radius: 30px;
+  background-color: #fff;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  box-shadow: 3px 2px 26px -15px, inset 10px 10px 50px -4px rgba(212, 211, 211, 0.1);
+}
+
+.facility:hover {
+  transform: scale(1.010) translateY(-8px);
+
+}
+
+.facility .fa_Icon {
+  width: 80px;
+  height: 80px;
+}
+
+.t-Main {
+  background-color: #fff;
+  border-radius: 30px;
+}
+
+
+.profileText {
+  border: solid #51a5da;
+  border-radius: 50%;
+  padding: 5px;
+  color: #51a5da;
+}
+
+.socialLinks ul {
+  list-style: none;
+}
+
+.socialLinks ul>li a {
+  color: #000000 !important;
+  text-decoration: none !important;
+}
+
+.socialLinks ul>li {
+  margin: 0px 10px;
+  width: 50px;
+  height: 50px;
+  padding: 5px 13px;
+  font-size: 20px;
+  border: solid #000000;
+  border-radius: 50%;
+}
+
+.contact ul {
+  list-style: none;
+}
+
+.contact ul>li {
+  margin: 0px 30px;
+}
+
+.contact ul>li {
+  font-size: 18px;
+}
+
+.taglineText {
+  width: 70%;
+}
+
+.contact ul>li a {
+  text-decoration: none !important;
+  font-size: 18px;
+  color: #000000 !important;
+}
+
+footer {
+  background-color: #fff;
+}
+
+.estimateBox {
+  background-color: #fff;
+}
+
+.ModelBox {
+  /* width: 30%; */
+  margin: auto;
+  max-height: 140px;
+  overflow-y: auto;
+}
+.ModelBox::-webkit-scrollbar{
+  display: none;
+}
+.list-items{
+  transition: 0.5s ease-in-out;
+}
+.list-items:hover{
+  transform: scale(1.010) translateY(-2px);
+}
+.series-list-item {
+  border-radius: 20px;
+  padding: 3px 5px;
+  background-color: antiquewhite;
+  font-size: 16px;
+  border: solid #51a5da;
+}
+.css-16r9pk3{
+  width: 350px !important;
+  max-width: 500px !important;
 }

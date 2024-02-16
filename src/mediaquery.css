@@ -1,0 +1,51 @@
+@media (max-width: 991px) {
+
+    /* Header Responsive Css  */
+    nav {
+        max-width: 250px !important;
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0%;
+        visibility: hidden;
+        z-index: 20 !important;
+        left: -100%;
+        transition: 0.3s ease-in-out;
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        background-color: #dedddb !important;
+        box-shadow: -19px 0px 25px 26px rgb(0, 0, 0 , 0.4);
+    }
+    .mLogo{
+        display: block !important;
+    }
+    .hamIcon{
+        display: block;
+      }
+    .resNav {
+        left: 0;
+        visibility: visible;
+    }
+
+    nav ul {
+        flex-direction: column !important;
+    }
+
+    nav ul>li {
+        color: #000000;
+        padding: 10px 20px;
+    }
+
+    .searchText input {
+        font-size: 30px !important;
+    }
+
+    .bSearch {
+        font-size: 16px !important;
+    }
+
+    .closeSearch {
+        top: 25px !important;
+        font-size: 30px !important;
+    }
+}
