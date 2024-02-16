@@ -7,30 +7,24 @@ import StepContent from '@mui/material/StepContent';
 import Button from '@mui/material/Button';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
+import Checkbox from '@mui/material/Checkbox';
+import FormControlLabel from '@mui/material/FormControlLabel';
 
 const steps = [
   {
     label: 'Select campaign settings',
-    description: `For each ad campaign that you create, you can control how much
-              you're willing to spend on clicks and conversions, which networks
-              and geographical locations you want your ads to show on, and more.`,
   },
   {
     label: 'Create an ad group',
-    description:
-      'An ad group contains one or more ads which target a shared set of keywords.',
   },
   {
     label: 'Create an ad',
-    description: `Try out different ad text to see what brings in the most customers,
-              and learn how to enhance your ads using features like ad extensions.
-              If you run into any problems with your ads, find out how to tell if
-              they're running and how to resolve approval issues.`,
   },
 ];
 
 export default function VerticalLinearStepper() {
   const [activeStep, setActiveStep] = React.useState(0);
+  const [formData, setFormData] = React.useState({});
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -42,6 +36,14 @@ export default function VerticalLinearStepper() {
 
   const handleReset = () => {
     setActiveStep(0);
+    setFormData({});
+  };
+
+  const handleCheckboxChange = (event) => {
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [activeStep]: event.target.checked,
+    }));
   };
 
   return (
@@ -49,17 +51,21 @@ export default function VerticalLinearStepper() {
       <Stepper activeStep={activeStep} orientation="vertical">
         {steps.map((step, index) => (
           <Step key={step.label}>
-            <StepLabel
-              optional={
-                index === 2 ? (
-                  <Typography variant="caption">Last step</Typography>
-                ) : null
-              }
-            >
+            <StepLabel>
               {step.label}
             </StepLabel>
             <StepContent>
-              <Typography>{step.description}</Typography>
+            <form>
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={formData[activeStep] || false}
+                      onChange={handleCheckboxChange}
+                    />
+                  }
+                  label="Description Checkbox"
+                />
+              </form>
               <Box sx={{ mb: 2 }}>
                 <div>
                   <Button
