@@ -10,13 +10,19 @@ import Typography from "@mui/material/Typography";
 
 const steps = [
   {
-    label: "Select campaign settings",
+    label: "Select Your Model",
   },
   {
-    label: "Create an ad group",
+    label: "Select Your Series",
   },
   {
-    label: "Create an ad",
+    label: "Select Your Spare Parts",
+  },
+  {
+    label: "Select State",
+  },
+  {
+    label: "Select City",
   },
 ];
 
