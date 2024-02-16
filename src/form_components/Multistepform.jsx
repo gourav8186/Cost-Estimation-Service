@@ -11,26 +11,24 @@ import Typography from "@mui/material/Typography";
 const steps = [
   {
     label: "Select Your Model",
+    data: ["Model1", "Model2", "Model3"],
   },
   {
     label: "Select Your Series",
+    data: ["T Series", "V Series", "Z Series", "X Series"],
   },
   {
     label: "Select Your Spare Parts",
+    data: ["Part1", "Part2", "Part3"],
   },
   {
     label: "Select State",
+    data: ["State1", "State2", "State3"],
   },
   {
     label: "Select City",
+    data: ["City1", "City2", "City3"],
   },
-];
-
-const seriesList = [
-  "T Series",
-  "V Series",
-  "Z Series",
-  "X Series",
 ];
 
 export default function VerticalLinearStepper() {
@@ -50,12 +48,12 @@ export default function VerticalLinearStepper() {
     setFormData({});
   };
 
-  const handleCheckboxChange = (series) => {
+  const handleCheckboxChange = (dataItem) => {
     setFormData((prevFormData) => ({
       ...prevFormData,
       [activeStep]: {
         ...prevFormData[activeStep],
-        [series]: !prevFormData[activeStep]?.[series],
+        [dataItem]: !prevFormData[activeStep]?.[dataItem],
       },
     }));
   };
@@ -69,23 +67,23 @@ export default function VerticalLinearStepper() {
             <StepContent>
               <form>
                 <div className="ModelBox p-3">
-                  {seriesList.map((series, seriesIndex) => (
-                    <div key={seriesIndex} className="list-items my-2">
+                  {step.data.map((dataItem, dataItemIndex) => (
+                    <div key={dataItemIndex} className="list-items my-2">
                       <label
-                        htmlFor={`series${seriesIndex}`}
+                        htmlFor={`dataItem${dataItemIndex}`}
                         className="series-list-item d-flex justify-content-between px-3"
                       >
                         <span>
                           <input
                             type="checkbox"
                             checked={
-                              formData[activeStep]?.[series] || false
+                              formData[activeStep]?.[dataItem] || false
                             }
-                            onChange={() => handleCheckboxChange(series)}
-                            id={`series${seriesIndex}`}
+                            onChange={() => handleCheckboxChange(dataItem)}
+                            id={`dataItem${dataItemIndex}`}
                           />
                         </span>
-                        <span>{series}</span>
+                        <span>{dataItem}</span>
                       </label>
                     </div>
                   ))}
