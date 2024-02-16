@@ -7,8 +7,7 @@ import StepContent from '@mui/material/StepContent';
 import Button from '@mui/material/Button';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
-import Checkbox from '@mui/material/Checkbox';
-import FormControlLabel from '@mui/material/FormControlLabel';
+import TextField from '@mui/material/TextField';
 
 const steps = [
   {
@@ -39,10 +38,10 @@ export default function VerticalLinearStepper() {
     setFormData({});
   };
 
-  const handleCheckboxChange = (event) => {
+  const handleInputChange = (value) => {
     setFormData((prevFormData) => ({
       ...prevFormData,
-      [activeStep]: event.target.checked,
+      [activeStep]: value,
     }));
   };
 
@@ -55,15 +54,15 @@ export default function VerticalLinearStepper() {
               {step.label}
             </StepLabel>
             <StepContent>
-            <form>
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      checked={formData[activeStep] || false}
-                      onChange={handleCheckboxChange}
-                    />
-                  }
-                  label="Description Checkbox"
+              <form>
+                <TextField
+                  label="Description"
+                  variant="outlined"
+                  fullWidth
+                  multiline
+                  rows={4}
+                  value={formData[activeStep] || ''}
+                  onChange={(e) => handleInputChange(e.target.value)}
                 />
               </form>
               <Box sx={{ mb: 2 }}>
