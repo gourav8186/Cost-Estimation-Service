@@ -7,9 +7,6 @@ import StepContent from "@mui/material/StepContent";
 import Button from "@mui/material/Button";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
-import FormGroup from "@mui/material/FormGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
 
 const steps = [
   {
@@ -21,6 +18,13 @@ const steps = [
   {
     label: "Create an ad",
   },
+];
+
+const seriesList = [
+  "T Series",
+  "V Series",
+  "Z Series",
+  "X Series",
 ];
 
 export default function VerticalLinearStepper() {
@@ -40,13 +44,15 @@ export default function VerticalLinearStepper() {
     setFormData({});
   };
 
-  const handleCheckboxChange = (event) => {
+  const handleCheckboxChange = (series) => {
     setFormData((prevFormData) => ({
       ...prevFormData,
-      [activeStep]: event.target.checked,
+      [activeStep]: {
+        ...prevFormData[activeStep],
+        [series]: !prevFormData[activeStep]?.[series],
+      },
     }));
   };
-
 
   return (
     <Box sx={{ maxWidth: 400 }}>
@@ -56,14 +62,28 @@ export default function VerticalLinearStepper() {
             <StepLabel>{step.label}</StepLabel>
             <StepContent>
               <form>
-                <FormGroup>
-                  <FormControlLabel
-                  checked={formData[activeStep] || false}
-                  onChange={handleCheckboxChange}
-                    control={<Checkbox defaultChecked />}
-                    label="Label"
-                  />
-                </FormGroup>
+                <div className="ModelBox p-3">
+                  {seriesList.map((series, seriesIndex) => (
+                    <div key={seriesIndex} className="list-items my-2">
+                      <label
+                        htmlFor={`series${seriesIndex}`}
+                        className="series-list-item d-flex justify-content-between px-3"
+                      >
+                        <span>
+                          <input
+                            type="checkbox"
+                            checked={
+                              formData[activeStep]?.[series] || false
+                            }
+                            onChange={() => handleCheckboxChange(series)}
+                            id={`series${seriesIndex}`}
+                          />
+                        </span>
+                        <span>{series}</span>
+                      </label>
+                    </div>
+                  ))}
+                </div>
               </form>
               <Box sx={{ mb: 2 }}>
                 <div>
