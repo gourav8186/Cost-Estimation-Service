@@ -1,5 +1,6 @@
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+// import SecondStep from "../form_components/SecondStep";
 import Multistepform from "../form_components/Multistepform";
 
 const Estimation = () => {
@@ -13,6 +14,7 @@ const Estimation = () => {
         </div>
         <div className="d-flex justify-content-center">
             <Multistepform />
+            {/* <SecondStep/>             */}
         </div>
       </section>
       <Footer />

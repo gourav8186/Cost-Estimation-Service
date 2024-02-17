@@ -7,33 +7,28 @@ import StepContent from "@mui/material/StepContent";
 import Button from "@mui/material/Button";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
+import SecondStep from "../form_components/SecondStep";
 
 const steps = [
   {
     label: "Select Your Model",
-    data: ["Model1", "Model2", "Model3"],
   },
   {
     label: "Select Your Series",
-    data: ["T Series", "V Series", "Z Series", "X Series"],
   },
   {
     label: "Select Your Spare Parts",
-    data: ["Part1", "Part2", "Part3"],
   },
   {
     label: "Select State",
-    data: ["State1", "State2", "State3"],
   },
   {
     label: "Select City",
-    data: ["City1", "City2", "City3"],
   },
 ];
 
 export default function VerticalLinearStepper() {
   const [activeStep, setActiveStep] = React.useState(0);
-  const [formData, setFormData] = React.useState({});
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -45,17 +40,16 @@ export default function VerticalLinearStepper() {
 
   const handleReset = () => {
     setActiveStep(0);
-    setFormData({});
   };
-
-  const handleCheckboxChange = (dataItem) => {
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      [activeStep]: {
-        ...prevFormData[activeStep],
-        [dataItem]: !prevFormData[activeStep]?.[dataItem],
-      },
-    }));
+  const getStepContent = (stepIndex) => {
+    switch (stepIndex) {
+      case 0:
+        return <SecondStep />;
+      case 1:
+        return <SecondStep />;
+      default:
+        return "Unknown stepIndex";
+    }
   };
 
   return (
@@ -65,30 +59,7 @@ export default function VerticalLinearStepper() {
           <Step key={step.label}>
             <StepLabel>{step.label}</StepLabel>
             <StepContent>
-              <form>
-                <div className="ModelBox p-3">
-                  {step.data.map((dataItem, dataItemIndex) => (
-                    <div key={dataItemIndex} className="list-items my-2">
-                      <label
-                        htmlFor={`dataItem${dataItemIndex}`}
-                        className="series-list-item d-flex justify-content-between px-3"
-                      >
-                        <span>
-                          <input
-                            type="checkbox"
-                            checked={
-                              formData[activeStep]?.[dataItem] || false
-                            }
-                            onChange={() => handleCheckboxChange(dataItem)}
-                            id={`dataItem${dataItemIndex}`}
-                          />
-                        </span>
-                        <span>{dataItem}</span>
-                      </label>
-                    </div>
-                  ))}
-                </div>
-              </form>
+              <form>{getStepContent(activeStep)}</form>
               <Box sx={{ mb: 2 }}>
                 <div>
                   <Button
